@@ -13,31 +13,31 @@ let team = [];
 const generateTeam = () => {
     return inquirer.prompt([
         {
-            type: input,
+            type: "input",
             message:"Please enter the manager's first and last name",
             name: 'managerName'
         },
 
         {
-            type: input,
+            type: "input",
             message: "Please enter the manager's email",
             name: "managerEmail"
         },
 
         {
-            type: input,
+            type: "input",
             message:"Please enter the manager's Employee ID Number",
             name: "managerID"
         },
 
         {
-            type:input,
+            type:"input",
             message:"Please enter the managers office number",
             name: "officeNumber"
         },
 
         {
-            type: confirm,
+            type: "confirm",
             message:"Do you have other employees you wish to add?",
             name: "addEmployee",
             default: true
@@ -58,45 +58,45 @@ const generateTeam = () => {
 const addInternOrEngineer = () => {
     return inquirer.prompt([
         {
-            type: list,
+            type: "list",
             message: "Please select the position of the new employee",
             name: 'employeeRole',
             choices: ['Engineer' ,'Intern']
         },
 
         {
-            type: input,
+            type: "input",
             message: "Please enter the first and last name of the employee",
             name: 'employeeName',
         },
 
         {
-            type: input,
+            type: "input",
             message: "Please enter the employees email address",
             name: "employeeEmail",
         },
 
         {
-            type: input,
+            type: "input",
             message:  "Please eneter the Employee ID Number" ,
             name: 'employeeId',
 
         },
         {
-            type: input,
+            type: "input",
             message: "Please enter the your Engineers Github profile",
             name: 'engineerGithub',
             when: answers => answers.employeeRole == 'Engineer'
         },
         {
-            type: input,
+            type: "input",
             message: "Please enter the school your Intern is currently attending",
             name: 'internSchool',
             when: answers => answers.employeeRole == 'Intern'
 
         },
         {
-            type: confirm,
+            type: "confirm",
             message: "Do you have other employees you wish to add?",
             name: 'addEmployee',
             default: true
