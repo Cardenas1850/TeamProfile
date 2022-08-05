@@ -123,7 +123,7 @@ const addInternOrEngineer = () => {
 function generateHTML(cards) {
 fs.writeFile('./dist/index.html',
     `
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -132,16 +132,22 @@ fs.writeFile('./dist/index.html',
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Document</title>
+    <title>Cardenas Engineering</title>
 </head>
 <body>
-    
+    <main>
+    <header>
+    <section>
+    ${cards}
+    </section>
+    </header>
+    </main>
 </body>
 </html>
     
     `,
     (err) => err ? console.error(err) : console.log("The Team profile has succuessfully be genereated to index.html"));
-};
+}
 
     //genereate the employee cards via prompt questions
     function createCards() {
@@ -161,7 +167,7 @@ fs.writeFile('./dist/index.html',
                 employeeInfo = `School: ${team[i].school}`;
             }
 
-            employeeCards += `
+           employeeCards += `
             <div class="card">
     <div class="card-body">
         <h5 class="card-title">${team[i].name}</h5>
