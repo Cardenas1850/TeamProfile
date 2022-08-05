@@ -7,7 +7,7 @@ let exampleSchool = "Ball State University";
 const internConstructor= new Intern(exampleName, exampleId, exampleEmail, exampleSchool);
 
 
-describe("intern", () => {
+describe("Intern", () => {
     it('should return a name email and id', () => {
         expect(internConstructor.email).toEqual("Cardenas7122@gmail.com");
         expect(internConstructor.id).toEqual("1234");
