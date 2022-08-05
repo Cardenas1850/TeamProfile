@@ -135,13 +135,10 @@ fs.writeFile('./dist/index.html',
     <title>Cardenas Engineering</title>
 </head>
 <body>
-    <main>
-    <header>
-    <section>
+    <header class="main-header bg-success text-dark text-center h-75 m-1 p-3"><h1>Cardenas Engineering</h1></header>
+    <section class="main-container d-flex flex-wrap justify-content-center">
     ${cards}
     </section>
-    </header>
-    </main>
 </body>
 </html>
     
@@ -157,29 +154,29 @@ fs.writeFile('./dist/index.html',
 
         for (i = 0 ; i < team.length; i++) {
             if(team[i].getRole() == 'Manager') {
-                employeeIcon = `fa-regular fa-user`;
+                employeeIcon = `fa-solid fa-user`;
                 employeeInfo = `Office Number: ${team[i].officeNumber}`
             } else if (team[i].getRole() == 'Engineer') {
-                employeeIcon = `fa-regular fa-computer`
-                employeeInfo = `Github: <a href="https://github.com/${team[i].engineerGithub}" target="_blank"> ${team[i].engineerGithub}</a>}`;
+                employeeIcon = `fa-solid fa-computer`
+                employeeInfo = `Github: <a href="https://github.com/${team[i].github}" target="_blank"> ${team[i].github}</a>`;
             } else if (team[i].getRole() == 'Intern') {
-                employeeIcon = `fa-regular coffee`;
+                employeeIcon = `fa-solid fa-coffee`;
                 employeeInfo = `School: ${team[i].school}`;
             }
 
            employeeCards += `
-            <div class="card">
+    <div class="card shadow text-dark bg-success .col-6 w-25 rounded m-1 p-3">
     <div class="card-body">
-        <h5 class="card-title">${team[i].name}</h5>
+        <h5 class="card-title name-section">${team[i].name}</h5>
             <p class="card-text">
-                <span><i class="${employeeIcon}"></i></span>
-                <span></span>
+                <span class="mb-1"><i class="${employeeIcon}"></i></span>
+                <span class="role-section">${team[i].getRole()}</span>
             </p>
     </div>
-    <ul>
-        <li>ID: ${team[i].id}</li>
-        <li>Email:<a href="mailto:${team[i].email}">${team[i].email}</a></li>
-        <li>${employeeInfo}</li>
+    <ul class="list-group">
+        <li class="list-group-item">ID: ${team[i].id}</li>
+        <li class="list-group-item">Email:<a href="mailto:${team[i].email}">${team[i].email}</a></li>
+        <li class="list-group-item">${employeeInfo}</li>
     </ul>
 </div> 
   `
