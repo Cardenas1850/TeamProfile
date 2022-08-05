@@ -22,7 +22,7 @@
   "homepage": "https://github.com/Cardenas1850/TeamProfile#readme",
   "dependencies": {
     "fs": "^0.0.1-security",
-    "inquirer": "^9.1.0",
+    "inquirer": "^8.2.4",
     "jest": "^28.1.3"
   }
 }

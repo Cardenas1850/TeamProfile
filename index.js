@@ -4,7 +4,7 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-let team  [];
+let team = [];
 
 //begin the inquirer prompt questions for manager
 
@@ -40,7 +40,7 @@ const generateTeam = () => {
             type: confirm,
             message:"Do you have other employees you wish to add?",
             name: "addEmployee",
-            default: true;
+            default: true
         },
         
     ])
@@ -120,8 +120,8 @@ const addInternOrEngineer = () => {
 };
 
 
-function generateHTML(cards)
-fs.write('./dist/index.html',
+function generateHTML(cards) {
+fs.writeFile('./dist/index.html',
     `
     <!DOCTYPE html>
 <html lang="en">
@@ -141,20 +141,44 @@ fs.write('./dist/index.html',
     
     `,
     (err) => err ? console.error(err) : console.log("The Team profile has succuessfully be genereated to index.html"));
-
+};
 
     //genereate the employee cards via prompt questions
-    function createCards();
+    function createCards() {
         let employeeCards = '';
         let employeeInfo = '';
         let employeeIcon = '';
 
         for (i = 0 ; i < team.length; i++) {
             if(team[i].getRole() == 'Manager') {
-                employeeIcon = `fa regular fa-user`;
+                employeeIcon = `fa-regular fa-user`;
                 employeeInfo = `Office Number: ${team[i].officeNumber}`
             } else if (team[i].getRole() == 'Engineer') {
-                employeeIcon = `fa regular fa-computer`
+                employeeIcon = `fa-regular fa-computer`
                 employeeInfo = `Github: <a href="https://github.com/${team[i].engineerGithub}" target="_blank"> ${team[i].engineerGithub}</a>}`;
+            } else if (team[i].getRole() == 'Intern') {
+                employeeIcon = `fa-regular coffee`;
+                employeeInfo = `School: ${team[i].school}`;
             }
+
+            employeeCards += `
+            <div class="card">
+    <div class="card-body">
+        <h5 class="card-title">${team[i].name}</h5>
+            <p class="card-text">
+                <span><i class="${employeeIcon}"></i></span>
+                <span></span>
+            </p>
+    </div>
+    <ul>
+        <li>ID: ${team[i].id}</li>
+        <li>Email:<a href="mailto:${team[i].email}">${team[i].email}</a></li>
+        <li>${employeeInfo}</li>
+    </ul>
+</div> 
+  `
         }
+        return employeeCards;
+    }
+
+        generateTeam();
